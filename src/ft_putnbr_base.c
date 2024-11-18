@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 12:24:11 by nbuchhol          #+#    #+#             */
-/*   Updated: 2024/11/18 14:52:04 by nbuchhol         ###   ########.fr       */
+/*   Created: 2024/11/18 16:24:53 by nbuchhol          #+#    #+#             */
+/*   Updated: 2024/11/18 16:24:57 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_putnbr_base(int nbr, short base)
 {
-	int		total;
-	va_list	ap;
+	char	*digits;
+	int		count;
 
-	if (!format)
-		return (-1);
-	total = 0;
-	va_start(ap, format);
-	total += ft_parse_format(format, ap);
-	va_end(ap);
-	return (total);
+	digits = "0123456789abcdef";
+	count = 0;
+	if (base < 2 || base > 16)
+		return (0);
+	if (nbr == -2147483648)
+	{
+		ft_putstr("-2147483648");
+		return (11);
+	}
+	if (nbr < 0 && base == 10)
+	{
+		ft_putchar('-');
+		count += 1;
+		nbr = -nbr;
+	}
+	if (nbr >= base)
+		count += ft_putnbr_base(nbr / base, base);
+	count += ft_putchar(digits[nbr % base]);
+	return (count);
 }

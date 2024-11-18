@@ -6,11 +6,11 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:10:46 by nbuchhol          #+#    #+#             */
-/*   Updated: 2024/11/18 11:14:26 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2024/11/18 15:57:46 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	ft_parse_format(const char *format, va_list ap)
 {
@@ -22,13 +22,17 @@ int	ft_parse_format(const char *format, va_list ap)
 	while (format[i])
 	{
 		if (format[i] == '%')
-			total += ft_handle_type(format[++i], ap);
+		{
+			i++;
+			if (format[i])
+				total += ft_handle_type(format[i], ap);
+		}
 		else
 		{
-			write(1, &format[i++], 1);
+			write(1, &format[i], 1);
 			total++;
 		}
+		i++;
 	}
 	return (total);
 }
-

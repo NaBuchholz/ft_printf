@@ -6,11 +6,11 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:06:11 by nbuchhol          #+#    #+#             */
-/*   Updated: 2024/11/18 11:08:29 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:52:21 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	ft_putchar(char c)
 {

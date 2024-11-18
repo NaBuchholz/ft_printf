@@ -6,7 +6,7 @@
 #    By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 16:35:09 by nbuchhol          #+#    #+#              #
-#    Updated: 2024/11/18 13:47:08 by nbuchhol         ###   ########.fr        #
+#    Updated: 2024/11/18 16:26:08 by nbuchhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,10 @@ CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -Iincludes
 SRCDIR = ./src
 SRC = ${SRCDIR}/ft_putchar.c \
-	  ${SRCDIR}/ft_handle_types.c \
+	  ${SRCDIR}/ft_putstr.c \
+	  ${SRCDIR}/ft_putnbr_base.c \
+	  ${SRCDIR}/ft_putptr.c \
+	  ${SRCDIR}/ft_handle_type.c \
 	  ${SRCDIR}/ft_parse_format.c \
 	  ${SRCDIR}/ft_printf.c
 OBJDIR = ./objs
@@ -35,7 +38,8 @@ RM = rm -rf
 all: ${NAME}
 
 ${NAME}: ${OBJDIR} ${OBJ}
-	ar rcs ${NAME} ${OBJ}
+	@ar rcs ${NAME} ${OBJ}
+	@echo "| libftprintf.a Was Generated Successfully!! |"
 
 ${OBJDIR}:
 	@mkdir -p ${OBJDIR}

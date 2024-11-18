@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 10:11:52 by nbuchhol          #+#    #+#             */
-/*   Updated: 2024/11/18 16:17:31 by nbuchhol         ###   ########.fr       */
+/*   Created: 2024/11/18 15:06:35 by nbuchhol          #+#    #+#             */
+/*   Updated: 2024/11/18 15:46:53 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../includes/ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdio.h>
+int	ft_putstr(const char *str)
+{
+	int	count;
+	int	i;
 
-int	ft_putchar(char c);
-int	ft_putstr(const char *str);
-int	ft_putnbr_base(int nbr, short base);
-int	ft_putptr(va_list ap);
-int	ft_handle_type(const char type, va_list ap);
-int	ft_parse_format(const char *format, va_list ap);
-int	ft_printf(const char *format, ...);
-
-#endif
+	if (!str)
+		return (ft_putstr("(null)"));
+	count = 0;
+	i = 0;
+	while (str[i])
+	{
+		count += ft_putchar(str[i]);
+		i++;
+	}
+	return (count);
+}

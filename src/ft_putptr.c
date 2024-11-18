@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle_types.c                                  :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 10:10:55 by nbuchhol          #+#    #+#             */
-/*   Updated: 2024/11/18 14:18:24 by nbuchhol         ###   ########.fr       */
+/*   Created: 2024/11/18 15:52:00 by nbuchhol          #+#    #+#             */
+/*   Updated: 2024/11/18 17:11:14 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int	ft_handle_type(const char type, va_list ap)
+int	ft_putptr(va_list ap)
 {
-	int	count;
+	unsigned long	ptr;
+	size_t			count;
 
-	if (!type)
-		return (-1);
+	ptr = (unsigned long)va_arg(ap, void *);
 	count = 0;
-	if (type == 'c')
-		count += ft_putchar(va_arg(ap, int));
+	if (ptr == 0)
+		return (count += ft_putstr("(nil)"));
+	else
+	{
+		count += ft_putstr("0x");
+		count += ft_putnbr_base(ptr, 16);
+	}
 	return (count);
 }
