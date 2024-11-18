@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_parse_format.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 12:24:11 by nbuchhol          #+#    #+#             */
-/*   Updated: 2024/11/12 12:36:51 by nbuchhol         ###   ########.fr       */
+/*   Created: 2024/11/18 10:10:46 by nbuchhol          #+#    #+#             */
+/*   Updated: 2024/11/18 11:14:26 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_parse_format(const char *format, va_list ap)
 {
-	// estudar os ... , que são args variáveis
+	int	i;
 	int	total;
 
+	i = 0;
 	total = 0;
-	va_list	args;
-	va_start(args, format);
-	total += parse_format(format, args);
-	va_end(args);
+	while (format[i])
+	{
+		if (format[i] == '%')
+			total += ft_handle_type(format[++i], ap);
+		else
+		{
+			write(1, &format[i++], 1);
+			total++;
+		}
+	}
 	return (total);
 }
+
