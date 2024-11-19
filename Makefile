@@ -6,7 +6,7 @@
 #    By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 16:35:09 by nbuchhol          #+#    #+#              #
-#    Updated: 2024/11/18 16:26:08 by nbuchhol         ###   ########.fr        #
+#    Updated: 2024/11/19 12:29:05 by nbuchhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ INCLUDES = -Iincludes
 SRCDIR = ./src
 SRC = ${SRCDIR}/ft_putchar.c \
 	  ${SRCDIR}/ft_putstr.c \
+	  ${SRCDIR}/ft_putnbr.c \
 	  ${SRCDIR}/ft_putnbr_base.c \
+	  ${SRCDIR}/ft_putnbr_base_uppercase.c \
 	  ${SRCDIR}/ft_putptr.c \
 	  ${SRCDIR}/ft_handle_type.c \
 	  ${SRCDIR}/ft_parse_format.c \

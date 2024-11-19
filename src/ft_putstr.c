@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:06:35 by nbuchhol          #+#    #+#             */
-/*   Updated: 2024/11/18 15:46:53 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:08:55 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 
 int	ft_putstr(const char *str)
 {
-	int	count;
-	int	i;
+	size_t	count;
 
 	if (!str)
 		return (ft_putstr("(null)"));
 	count = 0;
-	i = 0;
-	while (str[i])
+	while (*str)
 	{
-		count += ft_putchar(str[i]);
-		i++;
+		count += ft_putchar(*str);
+		str++;
 	}
 	return (count);
 }
