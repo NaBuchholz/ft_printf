@@ -6,7 +6,7 @@
 /*   By: nbuchhol <nbuchhol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:00 by nbuchhol          #+#    #+#             */
-/*   Updated: 2024/11/18 17:11:14 by nbuchhol         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:00:17 by nbuchhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 int	ft_putptr(va_list ap)
 {
-	unsigned long	ptr;
+	void			*ptr;
+	long			addr;
 	size_t			count;
 
-	ptr = (unsigned long)va_arg(ap, void *);
+	ptr = va_arg(ap, void *);
+	addr = (unsigned long)ptr;
 	count = 0;
-	if (ptr == 0)
-		return (count += ft_putstr("(nil)"));
+	if (!ptr)
+		count += ft_putstr("(nil)");
 	else
 	{
 		count += ft_putstr("0x");
-		count += ft_putnbr_base(ptr, 16);
+		count += ft_putnbr_base(addr, 16);
 	}
 	return (count);
 }
